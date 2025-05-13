@@ -1,6 +1,6 @@
 {
   "name": "custom-json-forms",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "React Native Paper adapter for uniforms library",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -44,13 +44,13 @@
     "schema",
     "validation"
   ],
-  "repository": "https://github.com/BlackBoxVision/uniforms-react-native-paper",
+  "repository": "https://github.com/Simfinix/custom-json-forms",
   "author": "SIMFINIX<support@simfinix.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/BlackBoxVision/uniforms-react-native-paper/issues"
+    "url": "https://github.com/Simfinix/custom-json-forms/issues"
   },
-  "homepage": "https://github.com/BlackBoxVision/uniforms-react-native-paper#readme",
+  "homepage": "https://simfinix.com",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
