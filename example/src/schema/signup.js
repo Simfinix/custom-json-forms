@@ -1,0 +1,73 @@
+import Ajv from 'ajv';
+import { JSONSchemaBridge } from 'uniforms-bridge-json-schema';
+const ajv = new Ajv({
+    allErrors: true,
+    useDefaults: true,
+    $data: true,
+});
+ajv.addKeyword('uniforms');
+ajv.addKeyword('allowedValues');
+ajv.addKeyword('checkboxes');
+const schema = {
+    title: 'Guest',
+    type: 'object',
+    properties: {
+        fullname: {
+            type: 'string',
+        },
+        email: {
+            type: 'string',
+        },
+        confirmEmail: {
+            type: 'string',
+            const: {
+                $data: '1/email',
+            },
+        },
+        password: {
+            type: 'string',
+            uniforms: {
+                type: 'password',
+            },
+        },
+        confirmPassword: {
+            type: 'string',
+            const: {
+                $data: '1/password',
+            },
+            uniforms: {
+                type: 'password',
+            },
+        },
+        acceptTermsOfUse: {
+            type: 'boolean',
+            const: true,
+        },
+        age: {
+            type: 'number',
+        },
+        number: {
+            type: 'string',
+            checkboxes: true,
+            allowedValues: ['1', '2', '3', '4'],
+        },
+    },
+    required: [
+        'fullname',
+        'email',
+        'confirmEmail',
+        'password',
+        'confirmPassword',
+        'acceptTermsOfUse',
+        'number',
+    ],
+};
+function createValidator(schema) {
+    const validator = ajv.compile(schema);
+    return (model) => {
+        validator(model);
+        return validator.errors?.length ? { details: validator.errors } : null;
+    };
+}
+const schemaValidator = createValidator(schema);
+export const bridge = new JSONSchemaBridge(schema, schemaValidator);

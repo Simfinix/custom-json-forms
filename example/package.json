@@ -1,6 +1,6 @@
 {
-  "name": "@blackbox-vision/uniforms-react-native-paper-example",
-  "description": "Example app for @blackbox-vision/uniforms-react-native-paper",
+  "name": "custom-json-forms-example",
+  "description": "Example app for custom-json-forms",
   "version": "0.0.1",
   "private": true,
   "main": "index",

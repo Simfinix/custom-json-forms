@@ -24,7 +24,7 @@ function Num({
   placeholder,
   readOnly,
   showInlineError,
-  value = '',
+  value = undefined,
   ...props
 }: NumFieldProps) {
   const [totalSum, setTotalSum] = useState(0);
@@ -40,7 +40,7 @@ function Num({
     let values = context?.model;
     let count = 0;
     for (const key in values) {
-      const value = values[key];
+      const value = (values as any)[key];
       if (typeof value === 'object' && value?.hasOwnProperty('value')) {
         count += value.value;
       }

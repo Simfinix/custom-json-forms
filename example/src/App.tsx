@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AutoForm } from '@blackbox-vision/uniforms-react-native-paper';
+import { AutoForm }from 'custom-json-forms';
 import {
   SafeAreaView,
   StatusBar,

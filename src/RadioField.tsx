@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Platform, View } from 'react-native';
 import { FieldProps, connectField } from 'uniforms';
 import { RadioButton, Text, useTheme } from 'react-native-paper';
-import globalColors from '../../../../src/styles/globalColors';
+import globalColors from './globalColors';
 
 export type RadioFieldProps = FieldProps<any, any>;
 

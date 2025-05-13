@@ -1,27 +1,9 @@
-# @blackbox-vision/uniforms-react-native-paper
+# custom-json-forms
 
-React Native Paper adapter for uniforms library
+A React Native Paper adapter for the [uniforms](https://github.com/vazco/uniforms) form library, extended and maintained by **SIMFINIX**. This package enhances mobile form capabilities with support for multiline inputs, automatic summation logic, styled radio buttons, and reusable components designed specifically for React Native.
 
-## Installation
+## 🚀 Installation
 
-```sh
-npm install @blackbox-vision/uniforms-react-native-paper
-```
+```bash
+npm install custom-json-forms
 
-## Usage
-
-```js
-import { multiply } from "@blackbox-vision/uniforms-react-native-paper";
-
-// ...
-
-const result = await multiply(3, 7);
-```
-
-## Contributing
-
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
-
-## License
-
-MIT

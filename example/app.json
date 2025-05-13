@@ -1,22 +1,16 @@
 {
-  "name": "@blackbox-vision/uniforms-react-native-paper-example",
-  "displayName": "UniformsReactNativePaper Example",
+  "name": "custom-json-forms-example",
+  "displayName": "Custom JSON Forms Example",
   "expo": {
-    "name": "@blackbox-vision/uniforms-react-native-paper-example",
-    "slug": "blackbox-vision-uniforms-react-native-paper-example",
-    "description": "Example app for @blackbox-vision/uniforms-react-native-paper",
+    "name": "custom-json-forms-example",
+    "slug": "custom-json-forms-example",
+    "description": "Example app for the custom-json-forms React Native library by SIMFINIX.",
     "privacy": "public",
     "version": "1.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "platforms": ["ios", "android", "web"],
     "ios": {
       "supportsTablet": true
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["**/*"]
   }
 }
