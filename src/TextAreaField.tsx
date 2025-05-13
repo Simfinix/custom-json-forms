@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { FieldProps, connectField } from 'uniforms';
 import { TextInput, HelperText } from 'react-native-paper';
 
-export type TextFieldProps = FieldProps<
+export type TextAreaFieldProps = FieldProps<
   string,
   React.ComponentProps<typeof TextInput>,
   {
@@ -26,14 +26,14 @@ function Text({
   showInlineError,
   value = '',
   ...props
-}: TextFieldProps) {
+}: TextAreaFieldProps) {
   let formHelperText = (error && showInlineError && errorMessage) || helperText;
 
   let helperProps: any = {
     type: showInlineError && error ? 'error' : 'info',
   };
 
-  return props.field.multiline ? (
+  return (
     <View
       style={{
         flex: 1,
@@ -41,34 +41,9 @@ function Text({
       }}
     >
       <TextInput
-        mode="outlined"
+        mode="flat"
+        disabled={disabled || readOnly}
         multiline
-        disabled={disabled || readOnly}
-        error={!!error}
-        label={`${label as any}${(props as any).required ? ' *' : ''}`}
-        onChangeText={(text: string) => disabled || onChange(text)}
-        placeholder={placeholder}
-        ref={inputRef}
-        value={value}
-        style={{ backgroundColor: 'transparent', minHeight: 100 }}
-        outlineColor="#462A82"
-        activeOutlineColor="#462A82"
-        {...(props as any)}
-      />
-      {!!formHelperText && (
-        <HelperText {...helperProps}>{formHelperText}</HelperText>
-      )}
-    </View>
-  ) : (
-    <View
-      style={{
-        flex: 1,
-        marginBottom: 8,
-      }}
-    >
-      <TextInput
-        mode="outlined"
-        disabled={disabled || readOnly}
         error={!!error}
         label={`${label as any}${(props as any).required ? ' *' : ''}`}
         dense={true}
@@ -77,8 +52,14 @@ function Text({
         ref={inputRef}
         value={value}
         style={{ backgroundColor: 'transparent' }}
-        outlineColor="#462A82"
-        activeOutlineColor="#462A82"
+        underlineStyle={{
+          width: '90%',
+          height: 1.5,
+          backgroundColor: '#462A82',
+          bottom: 0,
+          left: '5%',
+        }}
+        activeUnderlineColor="#462A82"
         {...(props as any)}
       />
       {!!formHelperText && (
@@ -88,4 +69,4 @@ function Text({
   );
 }
 
-export default connectField<TextFieldProps>(Text, { kind: 'leaf' });
+export default connectField<TextAreaFieldProps>(Text, { kind: 'leaf' });
