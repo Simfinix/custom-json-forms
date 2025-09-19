@@ -19,13 +19,19 @@ function Radio({
 }: RadioFieldProps) {
   const theme = useTheme();
 
+  // Azul translúcido para el ripple (Android)
+  const rippleColor =
+    theme.dark ? 'rgba(255,255,255,0.18)' : 'rgba(33,150,243,0.25)'; // azul Material
+
   const handleValueChange = (newValue: any) => {
     if (!disabled && !readOnly) {
       onChange(newValue);
     }
   };
 
-  const isSum = props?.field?.sum;
+  const isSum = (props as any)?.field?.sum;
+
+  const activeColor = theme.dark ? globalColors.defaultLight : globalColors.defaultDark;
 
   return isSum ? (
     <View style={{ flex: 1 }}>
@@ -79,11 +85,13 @@ function Radio({
                 >
                   <RadioButton
                     value={item}
-                    color={
-                      theme.dark
-                        ? globalColors.defaultLight
-                        : globalColors.defaultDark
-                    }
+                    // ⬇️ MÁS ÁREA TÁCTIL SIN TOCAR LA FILA/TEXTO
+                    style={{ padding: 8 }}
+                    // ⬇️ COLOR DEL CHECK
+                    color={activeColor}
+                    // ⬇️ RIPPLE AZUL (en Android; en iOS no aplica)
+                    theme={{ colors: { ripple: rippleColor } }}
+                    disabled={disabled || readOnly}
                   />
                 </View>
                 <View style={{ paddingRight: '5%' }}>
@@ -96,11 +104,10 @@ function Radio({
               <>
                 <RadioButton
                   value={item}
-                  color={
-                    theme.dark
-                      ? globalColors.defaultLight
-                      : globalColors.defaultDark
-                  }
+                  style={{ padding: 8 }} // ⬅️ agranda hit area del círculo
+                  color={activeColor}
+                  theme={{ colors: { ripple: rippleColor } }} // ⬅️ sombra azul inmediata
+                  disabled={disabled || readOnly}
                 />
                 <View style={{ paddingRight: '5%' }}>
                   <Text style={{ marginLeft: 15, marginRight: 15 }}>
@@ -166,11 +173,10 @@ function Radio({
                 >
                   <RadioButton
                     value={item}
-                    color={
-                      theme.dark
-                        ? globalColors.defaultLight
-                        : globalColors.defaultDark
-                    }
+                    style={{ padding: 8 }} // ⬅️ +hit area
+                    color={activeColor}
+                    theme={{ colors: { ripple: rippleColor } }} // ⬅️ azul
+                    disabled={disabled || readOnly}
                   />
                 </View>
                 <Text style={{ marginLeft: 15 }}>
@@ -181,11 +187,10 @@ function Radio({
               <>
                 <RadioButton
                   value={item}
-                  color={
-                    theme.dark
-                      ? globalColors.defaultLight
-                      : globalColors.defaultDark
-                  }
+                  style={{ padding: 8 }} // ⬅️ +hit area
+                  color={activeColor}
+                  theme={{ colors: { ripple: rippleColor } }} // ⬅️ azul
+                  disabled={disabled || readOnly}
                 />
                 <Text style={{ marginLeft: 15 }}>
                   {transform ? transform(item) : item}
@@ -200,3 +205,4 @@ function Radio({
 }
 
 export default connectField<RadioFieldProps>(Radio, { kind: 'leaf' });
+
